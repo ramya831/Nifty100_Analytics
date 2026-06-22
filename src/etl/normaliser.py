@@ -1,35 +1,39 @@
+import re
+
+
 def normalize_year(year):
-    """
-    Convert year values into standard format.
-    """
 
-    if year is None:
-        return None
+    year = str(year).strip()
 
-    year = str(year)
+    # Handle FY2024, FY-2024, 2024 etc.
+    match = re.search(r"\d{4}", year)
 
-    year = year.replace("FY", "")
-    year = year.strip()
+    if match:
+        return int(match.group())
 
-    return int(year)
+    # Handle 2024.0
+    return int(year.replace(".0", ""))
 
 
 def normalize_ticker(ticker):
-    """
-    Clean stock ticker names.
-    """
 
     if ticker is None:
         return None
 
-    ticker = str(ticker)
+    return str(ticker).upper().strip()
 
-    ticker = ticker.upper()
-    ticker = ticker.strip()
 
-    return ticker
-def normalize_year(year):
-    return int(str(year).replace(".0",""))
+def normalize_company_name(name):
 
-def normalize_ticker(ticker):
-    return ticker.upper().strip()
+    if name is None:
+        return None
+
+    return str(name).strip()
+
+
+def normalize_text(value):
+
+    if value is None:
+        return None
+
+    return str(value).strip()
