@@ -1,0 +1,7 @@
+table_name,row_count,status
+companies,0,loaded
+profitandloss,0,loaded
+balancesheet,0,loaded
+cashflow,0,loaded
+stock_prices,0,loaded
+financial_ratios,0,loaded
