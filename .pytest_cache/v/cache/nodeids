@@ -1,0 +1,7 @@
+[
+  "tests/etl/test_normaliser.py::test_ticker",
+  "tests/etl/test_normaliser.py::test_year",
+  "tests/etl/test_validator.py::test_negative_sales",
+  "tests/test_normaliser.py::test_ticker",
+  "tests/test_normaliser.py::test_year"
+]
