@@ -1,6 +1,6 @@
 import pandas as pd
 
-from etl.validator import (
+from src.etl.validator import (
     check_positive_sales
 )
 

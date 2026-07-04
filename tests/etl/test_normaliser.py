@@ -1,5 +1,4 @@
-from etl.normaliser import normalize_year, normalize_ticker
-
+from src.etl.normaliser import normalize_year, normalize_ticker
 
 def test_year():
     assert normalize_year("FY2024") == 2024
