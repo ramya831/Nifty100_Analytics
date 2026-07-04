@@ -96,3 +96,22 @@ def test_asset_turnover():
 
 def test_zero_asset_turnover():
     assert asset_turnover(1000, 0) is None
+    
+import os
+from src.analytics.ratios import save_financial_ratio
+
+
+def test_save_ratio():
+    db = "test_ratios.db"
+
+    save_financial_ratio(
+        db,
+        1,
+        2024,
+        "ROE",
+        15.5
+    )
+
+    assert os.path.exists(db)
+
+    os.remove(db)

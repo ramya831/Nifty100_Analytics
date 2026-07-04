@@ -86,4 +86,32 @@ def asset_turnover(sales, total_assets):
     if total_assets == 0:
         return None
 
-    return sales / total_assets
+    return sales / total_assets 
+
+import sqlite3
+
+def save_financial_ratio(db_path, company_id, year, ratio_name, ratio_value):
+    """
+    Save a financial ratio into the financial_ratios table.
+    """
+
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS financial_ratios (
+            company_id INTEGER,
+            year INTEGER,
+            ratio_name TEXT,
+            ratio_value REAL
+        )
+    """)
+
+    cursor.execute("""
+        INSERT INTO financial_ratios
+        (company_id, year, ratio_name, ratio_value)
+        VALUES (?, ?, ?, ?)
+    """, (company_id, year, ratio_name, ratio_value))
+
+    conn.commit()
+    conn.close()                                                                                                                                                 
