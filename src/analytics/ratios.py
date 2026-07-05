@@ -115,3 +115,10 @@ def save_financial_ratio(db_path, company_id, year, ratio_name, ratio_value):
 
     conn.commit()
     conn.close()                                                                                                                                                 
+def log_ratio_edge_case(filename, company, issue, category):
+    with open(filename, "a") as file:
+        file.write(
+            f"Company: {company}\n"
+            f"Issue: {issue}\n"
+            f"Category: {category}\n\n"
+        )

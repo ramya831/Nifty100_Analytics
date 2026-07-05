@@ -1,0 +1,13 @@
+Ratio Edge Cases Log
+
+Company: Sample Bank
+Issue: Financial sector leverage handled separately.
+Category: Sector Rule
+
+Company: Sample IT Company
+Issue: ROCE difference greater than 5%.
+Category: Formula Discrepancy
+
+Company: Sample FMCG Company
+Issue: ROE source mismatch.
+Category: Data Source Issue

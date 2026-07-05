@@ -115,3 +115,23 @@ def test_save_ratio():
     assert os.path.exists(db)
 
     os.remove(db)
+from src.analytics.ratios import log_ratio_edge_case
+
+
+def test_log_edge_case():
+    filename = "edge_case_test.log"
+
+    log_ratio_edge_case(
+        filename,
+        "TCS",
+        "ROCE mismatch",
+        "Formula Difference"
+    )
+
+    with open(filename, "r") as file:
+        content = file.read()
+
+    assert "TCS" in content
+
+    import os
+    os.remove(filename)
