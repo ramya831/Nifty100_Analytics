@@ -2,94 +2,76 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 
-DB_PATH = "data/nifty100.db"
+DB_PATH = "db/nifty100.db"
 
 
+# Cache the database connection
+@st.cache_resource
+def get_connection():
+    return sqlite3.connect(DB_PATH, check_same_thread=False)
+
+
+# -------------------------------
+# Companies
+# -------------------------------
 @st.cache_data(ttl=600)
 def get_companies():
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql("SELECT * FROM companies", conn)
-    conn.close()
-    return df
-
-
-@st.cache_data(ttl=600)
-def get_ratios(ticker=None, year=None):
-    conn = sqlite3.connect(DB_PATH)
-
-    query = "SELECT * FROM financial_ratios"
-
-    conditions = []
-
-    if ticker:
-        conditions.append(f"company_id='{ticker}'")
-
-    if year:
-        conditions.append(f"year='{year}'")
-
-    if conditions:
-        query += " WHERE " + " AND ".join(conditions)
-
-    df = pd.read_sql(query, conn)
-    conn.close()
-    return df
-
-
-@st.cache_data(ttl=600)
-def get_pl(ticker):
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql(
-        f"SELECT * FROM profit_loss WHERE company_id='{ticker}'", conn
+    df = pd.read_excel(
+        "data/raw/companies.xlsx",
+        header=1
     )
-    conn.close()
     return df
 
 
+# -------------------------------
+# Financial Ratios
+# -------------------------------
 @st.cache_data(ttl=600)
-def get_bs(ticker):
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql(
-        f"SELECT * FROM balance_sheet WHERE company_id='{ticker}'", conn
-    )
-    conn.close()
-    return df
+def get_ratios():
+    conn = get_connection()
+    return pd.read_sql_query("SELECT * FROM financial_ratios", conn)
 
 
+# -------------------------------
+# Profit & Loss
+# -------------------------------
 @st.cache_data(ttl=600)
-def get_cf(ticker):
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql(
-        f"SELECT * FROM cash_flow WHERE company_id='{ticker}'", conn
-    )
-    conn.close()
-    return df
+def get_profit_loss():
+    conn = get_connection()
+    return pd.read_sql_query("SELECT * FROM profitandloss", conn)
 
 
+# -------------------------------
+# Balance Sheet
+# -------------------------------
+@st.cache_data(ttl=600)
+def get_balance_sheet():
+    conn = get_connection()
+    return pd.read_sql_query("SELECT * FROM balancesheet", conn)
+
+
+# -------------------------------
+# Cash Flow
+# -------------------------------
+@st.cache_data(ttl=600)
+def get_cash_flow():
+    conn = get_connection()
+    return pd.read_sql_query("SELECT * FROM cashflow", conn)
+
+
+# -------------------------------
+# Sectors
+# -------------------------------
 @st.cache_data(ttl=600)
 def get_sectors():
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql("SELECT * FROM sectors", conn)
-    conn.close()
-    return df
+    conn = get_connection()
+    return pd.read_sql_query("SELECT * FROM sectors", conn)
 
 
+# -------------------------------
+# Peer Groups
+# -------------------------------
 @st.cache_data(ttl=600)
-def get_peers(group_name):
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql(
-        f"SELECT * FROM peer_percentiles WHERE peer_group_name='{group_name}'",
-        conn
-    )
-    conn.close()
-    return df
-
-
-@st.cache_data(ttl=600)
-def get_valuation(ticker):
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql(
-        f"SELECT * FROM valuation WHERE company_id='{ticker}'",
-        conn
-    )
-    conn.close()
-    return df
+def get_peer_groups():
+    conn = get_connection()
+    return pd.read_sql_query("SELECT * FROM peer_groups", conn)
