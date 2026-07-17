@@ -140,7 +140,7 @@ st.write(f"{len(companies)} Companies Found")
 
 st.dataframe(
     companies,
-    use_container_width=True
+    width="stretch"
 )
 csv = companies.to_csv(index=False)
 

@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 st.title("🏢 Company Profile")
 
@@ -7,17 +9,16 @@ ticker = st.text_input("Enter Company Name or Ticker")
 if ticker.upper() == "TCS":
 
     st.success(f"Showing details for {ticker}")
+
     st.markdown("### Company Information")
 
-    st.write("**Company:**", ticker)
-
+    st.write("**Company:**", ticker.upper())
     st.write("**Sector:** IT")
-
     st.write("**Sub Sector:** Software")
-
     st.write("**NSE:**", ticker.upper())
-
     st.write("Leading Indian IT Company")
+
+    # KPI Cards
     c1, c2, c3 = st.columns(3)
 
     c1.metric("ROE", "24.6%")
@@ -29,46 +30,56 @@ if ticker.upper() == "TCS":
     c4.metric("D/E", "0.18")
     c5.metric("Revenue CAGR", "15%")
     c6.metric("FCF", "₹12000 Cr")
-    import pandas as pd
-    import plotly.express as px
 
+    # Revenue Data
     revenue = pd.DataFrame({
-    "Year": [2020, 2021, 2022, 2023, 2024],
-    "Revenue": [150000, 165000, 180000, 200000, 220000]
+        "Year": [2020, 2021, 2022, 2023, 2024],
+        "Revenue": [150000, 165000, 180000, 200000, 220000]
     })
 
-    fig = px.bar(
-        revenue,
-        x="Year",
-        y="Revenue",
-        title="Revenue Growth"
-    )
+    revenue = revenue.fillna("N/A")
 
-    st.plotly_chart(fig, use_container_width=True)
+    if revenue.empty:
+        st.warning("No Revenue Data Available")
+    else:
+        fig = px.bar(
+            revenue,
+            x="Year",
+            y="Revenue",
+            title="Revenue Growth"
+        )
+        st.plotly_chart(fig, width="stretch")
+
+    # ROE Data
     roe = pd.DataFrame({
-    "Year": [2020, 2021, 2022, 2023, 2024],
-    "ROE": [18, 20, 21, 23, 25]
+        "Year": [2020, 2021, 2022, 2023, 2024],
+        "ROE": [18, 20, 21, 23, 25]
     })
 
-    fig = px.line(
-        roe,
-        x="Year",
-        y="ROE",
-        markers=True,
-        title="ROE Trend"
-    )
+    roe = roe.fillna("N/A")
 
-    st.plotly_chart(fig, use_container_width=True)
+    if roe.empty:
+        st.warning("No ROE Data Available")
+    else:
+        fig = px.line(
+            roe,
+            x="Year",
+            y="ROE",
+            markers=True,
+            title="ROE Trend"
+        )
+        st.plotly_chart(fig, width="stretch")
+
+    # Pros
     st.subheader("Pros")
 
     st.success("✔ High ROE")
-
     st.success("✔ Strong Cash Flow")
 
+    # Cons
     st.subheader("Cons")
 
     st.error("✖ Premium Valuation")
-
     st.error("✖ Slowing Revenue Growth")
 
 elif ticker != "":

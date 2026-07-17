@@ -66,7 +66,7 @@ fig = px.pie(
     hole=0.5
 )
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width="stretch")
 st.subheader("Top 5 Companies")
 
 top = pd.DataFrame({
@@ -86,4 +86,4 @@ top = pd.DataFrame({
     ]
 })
 
-st.dataframe(top, use_container_width=True)
+st.dataframe(top, width="stretch")
