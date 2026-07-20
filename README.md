@@ -1,157 +1,307 @@
 # 📊 Nifty100 Analytics Project
 
-## 📌 Project Overview
+A comprehensive financial analytics platform for Nifty100 companies built using **Python**, **Pandas**, **SQLite**, **Plotly**, and **Streamlit**.
 
-Nifty100 Analytics is a data analytics project that processes and analyzes Nifty100 company financial data.
-
-The project uses Python, Pandas, SQLite, and SQL to build an ETL pipeline that loads, validates, stores, and analyzes financial datasets.
+The project performs ETL processing, financial ratio analysis, valuation analysis, and provides an interactive dashboard for exploring company performance.
 
 ---
 
-## 🎯 Project Objectives
+# 🚀 Features
 
-- Collect Nifty100 company financial datasets
-- Clean and validate raw data
-- Create structured database tables
-- Load data using ETL pipeline
-- Perform SQL-based analysis
-- Generate quality reports
+- ETL Pipeline
+- Data Validation
+- SQLite Database
+- Financial Ratio Analysis
+- Profitability Analysis
+- Liquidity Analysis
+- Leverage Analysis
+- Efficiency Analysis
+- Growth Analysis
+- Valuation Module
+- Interactive Streamlit Dashboard
+- Company Screener
+- Peer Comparison
+- Trend Analysis
+- Sector Analysis
+- Capital Allocation Map
+- Annual Reports Viewer
+- CSV Export
 
 ---
 
-## 🛠️ Technologies Used
+# 🛠 Technologies Used
 
 - Python
 - Pandas
 - SQLite
 - SQL
-- Git & GitHub
-- Excel Dataset Processing
+- Streamlit
+- Plotly
+- OpenPyXL
+- Git
+- GitHub
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```
-Nifty100_Analytics
+Nifty100_Analytics/
 │
+├── config/
 ├── data/
 │   └── raw/
-│       └── Financial datasets (.xlsx)
-│
 ├── db/
-│   └── SQLite database
-│
 ├── notebooks/
-│   └── SQL analysis queries
-│
 ├── output/
-│   └── Validation reports
-│
+│   ├── valuation_summary.xlsx
+│   └── valuation_flags.csv
+├── reports/
 ├── src/
+│   ├── analytics/
+│   │   └── valuation.py
+│   ├── dashboard/
+│   │   ├── app.py
+│   │   ├── pages/
+│   │   │   ├── 01_home.py
+│   │   │   ├── 02_profile.py
+│   │   │   ├── 03_screener.py
+│   │   │   ├── 04_peers.py
+│   │   │   ├── 05_trends.py
+│   │   │   ├── 06_sectors.py
+│   │   │   ├── 07_capital.py
+│   │   │   └── 08_reports.py
+│   │   └── utils/
+│   │       └── db.py
 │   └── etl/
-│       ├── loader.py
-│       └── normalizer.py
-│
 ├── tests/
-│   └── etl/
-│       └── Data validation tests
-│
-├── create_tables.py
-├── review_data.py
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
-## 📅 Project Progress
+# 📅 Sprint Progress
 
-### Day 1: Environment Setup
-- Created project structure
-- Setup Python environment
+## Sprint 1
 
-### Day 3: Data Validation
-- Implemented schema validation
-- Added 16 Data Quality rules
+- Environment Setup
+- Project Structure
+- Data Collection
+- ETL Pipeline
 
-### Day 4: Database Creation
-- Created SQLite database
-- Added primary key and foreign key constraints
+## Sprint 2
 
-### Day 5: Data Loading
-- Loaded 12 Nifty100 datasets
-- Completed ETL data loading process
-
-### Day 6: Data Quality Review
-- Verified database tables
-- Checked loaded records
-- Performed manual data quality review
-
-### Day 7: Analysis & Review
-- Created SQL exploratory queries
-- Reviewed complete project workflow
-
----
-
-## 📊 Datasets Used
-
-- Companies
-- Stock Prices
-- Market Capitalization
+- SQLite Database
 - Financial Ratios
-- Balance Sheet
-- Profit & Loss
-- Cash Flow
-- Sectors
-- Peer Groups
-- Documents
-- Pros & Cons
-- Analysis Data
+- SQL Analysis
+- Reports
+- Testing
+
+## Sprint 3
+
+- Screener Logic
+- Peer Comparison Engine
+- Financial Metrics
+- Composite Score
+
+## Sprint 4
+
+- Streamlit Dashboard
+- Company Profile
+- Screener
+- Peer Comparison
+- Trend Analysis
+- Sector Analysis
+- Capital Allocation
+- Annual Reports
+- Valuation Module
+- Dashboard Integration
+- Documentation
 
 ---
 
-## 🚀 How to Run Project
+# 📊 Dashboard Screens
 
-Clone repository:
+## 🏠 Home
+
+- Summary KPI Cards
+- Sector Distribution
+- Top Companies Table
+- Year Selector
+
+---
+
+## 🏢 Company Profile
+
+- Company Details
+- Financial KPI Cards
+- Revenue Chart
+- ROE Trend
+- Pros & Cons
+
+---
+
+## 🔍 Screener
+
+- Financial Metric Filters
+- Preset Filters
+- Live Results
+- CSV Download
+
+---
+
+## 👥 Peer Comparison
+
+- Peer Group Selection
+- Radar Chart
+- KPI Comparison Table
+
+---
+
+## 📈 Trend Analysis
+
+- Multi-Metric Trends
+- Company Search
+- 10-Year Analysis
+
+---
+
+## 🏭 Sector Analysis
+
+- Bubble Chart
+- Sector KPIs
+- Revenue vs ROE Analysis
+
+---
+
+## 🌳 Capital Allocation
+
+- Treemap Visualization
+- Capital Allocation Patterns
+
+---
+
+## 📄 Annual Reports
+
+- Company Search
+- Available Reports
+- Report Links
+
+---
+
+# 📈 Valuation Module
+
+The valuation module calculates:
+
+- FCF Yield
+- P/E Analysis
+- P/B Analysis
+- EV/EBITDA
+- Sector Median P/E
+- Valuation Flags
+
+Outputs generated:
+
+- valuation_summary.xlsx
+- valuation_flags.csv
+
+---
+
+# ▶️ Running the Project
+
+## Clone Repository
 
 ```bash
-git clone <your-github-link>
+git clone https://github.com/ramya831/Nifty100_Analytics.git
 ```
 
-Install requirements:
+---
+
+## Install Dependencies
 
 ```bash
-pip install pandas openpyxl
+pip install -r requirements.txt
 ```
 
-Create database:
+---
+
+## Create Database
 
 ```bash
 python create_tables.py
 ```
 
-Load data:
+---
+
+## Run ETL
 
 ```bash
 python src/etl/loader.py
 ```
 
-Review data:
+---
+
+## Run Dashboard
 
 ```bash
-python review_data.py
+streamlit run src/dashboard/app.py
 ```
 
 ---
 
-## 👩‍💻 Author
+# 📊 Deliverables
 
-**Ungarala Ramya**
-
-B.Tech Computer Science Engineering
+- ETL Pipeline
+- SQLite Database
+- Financial Analytics
+- Dashboard
+- Valuation Module
+- CSV Export
+- Reports
+- Documentation
 
 ---
 
-## ⭐ Project Status
+# 📝 Sprint 4 Retrospective
 
-Completed ✅
+## UX Decisions
+
+- Sidebar navigation for all screens
+- KPI cards for quick insights
+- Interactive Plotly charts
+- Responsive dashboard layout
+
+### Data Edge Cases
+
+- Missing values displayed as **N/A**
+- Invalid ticker handled gracefully
+- Empty datasets handled without crashes
+
+### Performance
+
+- Cached database queries
+- Optimized chart rendering
+- Dashboard pages load quickly
+
+---
+
+# 👩‍💻 Author
+
+**Ungarala Ramya**
+
+B.Tech – Computer Science Engineering
+
+---
+
+# ⭐ Project Status
+
+✅ Sprint 1 Completed
+
+✅ Sprint 2 Completed
+
+✅ Sprint 3 Completed
+
+✅ Sprint 4 Completed
+
+🎉 Nifty100 Analytics Dashboard Successfully Developed.
