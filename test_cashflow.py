@@ -71,7 +71,9 @@ for _, row in df.iterrows():
 
         "distress_flag": distress,
 
-        "deleveraging_flag": deleverage
+        "deleveraging_flag": deleverage,
+        
+        "capital_allocation_label": "Reinvestor"
 
     })
 
