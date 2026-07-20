@@ -1,50 +1,45 @@
-def free_cash_flow(cfo, cfi):
-    return cfo + cfi
+import pandas as pd
 
 
-def cfo_quality_score(cfo, pat):
+def cfo_quality(cfo, pat):
+
     if pat == 0:
-        return None
+        return 0, "Unknown"
 
     score = cfo / pat
 
     if score > 1:
-        return "High Quality"
+        label = "High Quality"
     elif score >= 0.5:
-        return "Moderate"
+        label = "Moderate"
     else:
-        return "Accrual Risk"
+        label = "Accrual Risk"
+
+    return round(score, 2), label
 
 
-def capex_intensity(investing_activity, sales):
+def capex_intensity(investing, sales):
+
     if sales == 0:
-        return None
+        return 0, "Unknown"
 
-    return abs(investing_activity) / sales * 100
+    value = abs(investing) / sales * 100
+
+    if value < 3:
+        label = "Asset Light"
+    elif value <= 8:
+        label = "Moderate"
+    else:
+        label = "Capital Intensive"
+
+    return round(value, 2), label
 
 
-def fcf_conversion_rate(fcf, operating_profit):
-    if operating_profit == 0:
-        return None
+def distress_signal(cfo, cff):
 
-    return fcf / operating_profit * 100
+    return cfo < 0 and cff > 0
 
 
-def capital_allocation_pattern(cfo, cfi, cff):
-    signs = (
-        "+" if cfo >= 0 else "-",
-        "+" if cfi >= 0 else "-",
-        "+" if cff >= 0 else "-"
-    )
+def deleveraging(cff, borrowings_old, borrowings_new):
 
-    mapping = {
-        ("+", "-", "-"): "Reinvestor",
-        ("+", "+", "-"): "Liquidating Assets",
-        ("-", "+", "+"): "Distress Signal",
-        ("-", "-", "+"): "Growth Funded by Debt",
-        ("+", "+", "+"): "Cash Accumulator",
-        ("-", "-", "-"): "Pre-Revenue",
-        ("+", "-", "+"): "Mixed",
-    }
-
-    return mapping.get(signs, "Unknown")
+    return cff < 0 and borrowings_new < borrowings_old
