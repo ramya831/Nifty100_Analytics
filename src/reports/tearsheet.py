@@ -14,7 +14,7 @@ from reportlab.lib.units import inch
 def generate_tearsheet(company):
 
     pdf = SimpleDocTemplate(
-        f"reports/{company}_tearsheet.pdf"
+        f"reports/tearsheets/{company}_tearsheet.pdf"
     )
 
     styles = getSampleStyleSheet()
