@@ -1,0 +1,7 @@
+company_id,type,rule_id,text,confidence_pct
+1.0,Pro,P1,Consistently high return on equity above 20% demonstrates exceptional capital efficiency.,95
+1.0,Pro,P2,Strong free cash flow generation indicates healthy business fundamentals.,90
+1.0,Pro,P3,Revenue growing above 15% CAGR reflects strong business momentum.,88
+2.0,Con,C1,Debt-to-equity ratio is elevated and warrants monitoring.,90
+2.0,Con,C2,Return on capital employed below 10% suggests weak capital efficiency.,85
+2.0,Con,C3,Revenue growth below 5% indicates limited business momentum.,80
