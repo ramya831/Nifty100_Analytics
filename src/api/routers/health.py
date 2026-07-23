@@ -3,7 +3,6 @@ import sqlite3
 import time
 
 router = APIRouter(
-    prefix="/health",
     tags=["Health"]
 )
 

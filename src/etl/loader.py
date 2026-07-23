@@ -2,17 +2,31 @@ import sqlite3
 import pandas as pd
 import os
 
-
 DB_PATH = "db/nifty100.db"
 DATA_PATH = "data/raw"
+
+
+def make_unique(columns):
+    """Make duplicate column names unique."""
+    seen = {}
+    new_cols = []
+
+    for col in columns:
+        col = str(col).strip()
+
+        if col in seen:
+            seen[col] += 1
+            new_cols.append(f"{col}_{seen[col]}")
+        else:
+            seen[col] = 0
+            new_cols.append(col)
+
+    return new_cols
 
 
 def load_excel():
 
     conn = sqlite3.connect(DB_PATH)
-
-    conn.execute("PRAGMA foreign_keys = ON")
-
 
     files = {
         "companies.xlsx": "companies",
@@ -29,27 +43,51 @@ def load_excel():
         "market_cap.xlsx": "market_cap"
     }
 
+    # Files having a title row before the real header
+    special_files = {
+        "companies.xlsx",
+        "analysis.xlsx"
+    }
 
     for file, table in files.items():
 
         path = os.path.join(DATA_PATH, file)
 
+        if not os.path.exists(path):
+            print(f"{file} not found")
+            continue
 
-        if os.path.exists(path):
+        print(f"\nLoading {file}...")
 
-            print("Loading:", file)
+        try:
 
+            if file in special_files:
+                # Read without header
+                df = pd.read_excel(path, header=None)
 
-            df = pd.read_excel(path)
+                # Remove title row
+                df = df.iloc[1:].reset_index(drop=True)
 
+                # First row becomes header
+                headers = df.iloc[0].astype(str)
 
-            # remove empty columns
+                # Remaining rows are data
+                df = df.iloc[1:].reset_index(drop=True)
+
+                headers = make_unique(headers)
+                df.columns = headers
+
+            else:
+                # Normal Excel files
+                df = pd.read_excel(path)
+
+                df.columns = make_unique(df.columns)
+
+            # Remove empty columns
             df = df.dropna(axis=1, how="all")
 
-
-            # remove duplicate columns
-            df = df.loc[:, ~df.columns.duplicated()]
-
+            # Remove empty rows
+            df = df.dropna(how="all")
 
             df.to_sql(
                 table,
@@ -58,17 +96,15 @@ def load_excel():
                 index=False
             )
 
+            print(f"✓ {table} loaded successfully ({len(df)} rows)")
 
-            print(table, "loaded")
-
-
-        else:
-            print(file, "missing")
-
+        except Exception as e:
+            print(f"✗ Error loading {file}")
+            print(e)
 
     conn.close()
 
-    print("All files loaded")
+    print("\nAll files loaded successfully.")
 
 
 if __name__ == "__main__":
