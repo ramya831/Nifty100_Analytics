@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 from src.api.database import get_connection
 
 router = APIRouter(
@@ -6,23 +6,45 @@ router = APIRouter(
     tags=["Screener"]
 )
 
+
 @router.get("/")
-def get_screener():
+def get_screener(
+    search: str = "",
+    min_roe: float = 0
+):
     conn = get_connection()
 
-    cursor = conn.execute("""
-        SELECT
-            id,
-            company_name,
-            face_value,
-            book_value,
-            roe_percentage,
-            roce_percentage
-        FROM companies
-        LIMIT 20
-    """)
+    query = """
+    SELECT
+        id,
+        company_name,
+        roe_percentage,
+        roce_percentage,
+        face_value,
+        book_value
+    FROM companies
+    WHERE company_name LIKE ?
+    """
 
-    data = [dict(row) for row in cursor.fetchall()]
+    cursor = conn.execute(
+        query,
+        (f"%{search}%",)
+    )
+
+    rows = cursor.fetchall()
+
+    result = []
+
+    for row in rows:
+
+        try:
+            roe = float(row["roe_percentage"])
+        except:
+            roe = 0
+
+        if roe >= min_roe:
+            result.append(dict(row))
+
     conn.close()
 
-    return data
+    return result
