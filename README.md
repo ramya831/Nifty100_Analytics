@@ -1,15 +1,15 @@
 # 📊 Nifty100 Analytics Project
 
-A comprehensive financial analytics platform for Nifty100 companies built using **Python**, **Pandas**, **SQLite**, **Plotly**, and **Streamlit**.
+A comprehensive financial analytics platform for **NIFTY 100 companies** built using **Python, FastAPI, SQLite, Pandas, Plotly, and Streamlit**.
 
-The project performs ETL processing, financial ratio analysis, valuation analysis, and provides an interactive dashboard for exploring company performance.
+The project provides an end-to-end analytics solution including ETL processing, financial ratio calculations, valuation analysis, stock screening, peer comparison, portfolio analytics, REST APIs, automated testing, and an interactive dashboard.
 
 ---
 
 # 🚀 Features
 
 - ETL Pipeline
-- Data Validation
+- Data Validation & Quality Checks
 - SQLite Database
 - Financial Ratio Analysis
 - Profitability Analysis
@@ -17,118 +17,232 @@ The project performs ETL processing, financial ratio analysis, valuation analysi
 - Leverage Analysis
 - Efficiency Analysis
 - Growth Analysis
+- CAGR Analysis
+- Cash Flow Analytics
 - Valuation Module
-- Interactive Streamlit Dashboard
 - Company Screener
-- Peer Comparison
+- Peer Comparison Engine
+- Portfolio Analytics
 - Trend Analysis
 - Sector Analysis
 - Capital Allocation Map
 - Annual Reports Viewer
-- CSV Export
+- CSV & Excel Export
+- Interactive Streamlit Dashboard
+- FastAPI REST APIs
+- Swagger & ReDoc API Documentation
+- Automated Testing
+- Performance Benchmarking
+- Code Coverage Analysis
+
+---
+
+# 🧪 Testing & Quality Assurance
+
+- Unit Testing
+- API Integration Testing
+- ETL Testing
+- KPI Testing
+- Data Quality Testing
+- Performance Benchmarking
+- Code Coverage Analysis
+- HTML Test Reports
 
 ---
 
 # 🛠 Technologies Used
 
+### Programming
+
 - Python
-- Pandas
+
+### Backend
+
+- FastAPI
+- Uvicorn
+
+### Database
+
 - SQLite
-- SQL
-- Streamlit
+
+### Data Processing
+
+- Pandas
+- NumPy
+
+### Visualization
+
 - Plotly
-- OpenPyXL
+- Streamlit
+
+### Testing
+
+- Pytest
+- Pytest-Cov
+- Requests
+
+### Version Control
+
 - Git
 - GitHub
 
 ---
-
 # 📂 Project Structure
 
-```
+```text
 Nifty100_Analytics/
 │
 ├── config/
 ├── data/
-│   └── raw/
+│   ├── raw/
+│   └── processed/
+│
 ├── db/
+│
 ├── notebooks/
+│
 ├── output/
 │   ├── valuation_summary.xlsx
-│   └── valuation_flags.csv
+│   ├── valuation_flags.csv
+│   ├── perf_notes.md
+│   └── reports/
+│
 ├── reports/
+│
 ├── src/
 │   ├── analytics/
-│   │   └── valuation.py
+│   ├── api/
 │   ├── dashboard/
-│   │   ├── app.py
-│   │   ├── pages/
-│   │   │   ├── 01_home.py
-│   │   │   ├── 02_profile.py
-│   │   │   ├── 03_screener.py
-│   │   │   ├── 04_peers.py
-│   │   │   ├── 05_trends.py
-│   │   │   ├── 06_sectors.py
-│   │   │   ├── 07_capital.py
-│   │   │   └── 08_reports.py
-│   │   └── utils/
-│   │       └── db.py
-│   └── etl/
+│   ├── dq/
+│   ├── etl/
+│   └── screener/
+│
 ├── tests/
-├── README.md
-└── requirements.txt
+│
+├── performance_test.py
+├── create_tables.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 # 📅 Sprint Progress
 
-## Sprint 1
+## ✅ Sprint 1
 
 - Environment Setup
 - Project Structure
 - Data Collection
 - ETL Pipeline
-
-## Sprint 2
-
-- SQLite Database
-- Financial Ratios
-- SQL Analysis
-- Reports
-- Testing
-
-## Sprint 3
-
-- Screener Logic
-- Peer Comparison Engine
-- Financial Metrics
-- Composite Score
-
-## Sprint 4
-
-- Streamlit Dashboard
-- Company Profile
-- Screener
-- Peer Comparison
-- Trend Analysis
-- Sector Analysis
-- Capital Allocation
-- Annual Reports
-- Valuation Module
-- Dashboard Integration
-- Documentation
+- Data Cleaning
 
 ---
 
-# 📊 Dashboard Screens
+## ✅ Sprint 2
 
-## 🏠 Home
+- SQLite Database
+- Financial Ratio Analysis
+- KPI Calculations
+- SQL Queries
+- Reports Generation
 
-- Summary KPI Cards
+---
+
+## ✅ Sprint 3
+
+- Company Screener
+- Peer Comparison Engine
+- Sector Analytics
+- Portfolio Analytics
+
+---
+
+## ✅ Sprint 4
+
+- Streamlit Dashboard
+- Company Profile
+- Screener Dashboard
+- Peer Comparison Dashboard
+- Trend Analysis
+- Sector Analysis
+- Capital Allocation
+- Annual Reports Viewer
+- Valuation Module
+
+---
+
+## ✅ Sprint 5
+
+- FastAPI REST APIs
+- Health API
+- Companies API
+- Sectors API
+- Screener API
+- Portfolio API
+- Documents API
+- Peer Comparison API
+- Valuation API
+- Swagger Documentation
+- API Integration Testing
+
+---
+
+## ✅ Sprint 6
+
+- Unit Testing
+- API Testing
+- ETL Testing
+- KPI Testing
+- Screener Testing
+- Data Quality Testing
+- Performance Benchmarking
+- Code Coverage Analysis
+- Project Documentation
+
+---
+# 🌐 REST APIs
+
+The project exposes REST APIs using **FastAPI** for accessing financial analytics, screening companies, portfolio insights, and other project modules.
+
+## Available APIs
+
+- Health API
+- Companies API
+- Sectors API
+- Screener API
+- Portfolio API
+- Documents API
+- Peer Comparison API
+- Valuation API
+
+---
+
+## API Documentation
+
+### Swagger UI
+
+```
+http://127.0.0.1:8000/docs
+```
+
+### ReDoc
+
+```
+http://127.0.0.1:8000/redoc
+```
+
+---
+
+# 📊 Dashboard Modules
+
+## 🏠 Home Dashboard
+
+- KPI Summary Cards
 - Sector Distribution
 - Top Companies Table
-- Year Selector
+- Year Selection
+- Overall Market Overview
 
 ---
 
@@ -136,18 +250,20 @@ Nifty100_Analytics/
 
 - Company Details
 - Financial KPI Cards
-- Revenue Chart
+- Revenue Trend
 - ROE Trend
 - Pros & Cons
+- Company Overview
 
 ---
 
-## 🔍 Screener
+## 🔍 Company Screener
 
 - Financial Metric Filters
 - Preset Filters
+- Composite Score
 - Live Results
-- CSV Download
+- CSV Export
 
 ---
 
@@ -156,69 +272,116 @@ Nifty100_Analytics/
 - Peer Group Selection
 - Radar Chart
 - KPI Comparison Table
+- Financial Benchmarking
 
 ---
 
 ## 📈 Trend Analysis
 
-- Multi-Metric Trends
+- Multi-Year Financial Trends
+- Revenue Growth
+- Profit Growth
 - Company Search
-- 10-Year Analysis
+- Historical Performance
 
 ---
 
 ## 🏭 Sector Analysis
 
+- Sector KPI Summary
 - Bubble Chart
-- Sector KPIs
 - Revenue vs ROE Analysis
+- Sector Performance Comparison
 
 ---
 
 ## 🌳 Capital Allocation
 
 - Treemap Visualization
-- Capital Allocation Patterns
+- Capital Allocation Breakdown
+- Investment Distribution
 
 ---
 
 ## 📄 Annual Reports
 
 - Company Search
-- Available Reports
+- Available Annual Reports
 - Report Links
+- Report Downloads
 
 ---
 
-# 📈 Valuation Module
+# 📈 Financial Analytics
 
-The valuation module calculates:
+The project calculates:
 
-- FCF Yield
-- P/E Analysis
-- P/B Analysis
-- EV/EBITDA
-- Sector Median P/E
+- Return on Equity (ROE)
+- Return on Capital Employed (ROCE)
+- Earnings Per Share (EPS)
+- Debt-to-Equity Ratio
+- Current Ratio
+- Quick Ratio
+- Net Profit Margin
+- Operating Margin
+- CAGR
+- Cash Flow KPIs
+- Financial Health Score
+
+---
+
+# 📊 Valuation Module
+
+The valuation engine performs:
+
+- Price-to-Earnings (P/E) Analysis
+- Price-to-Book (P/B) Analysis
+- EV/EBITDA Analysis
+- Free Cash Flow (FCF) Yield
+- Sector Median Comparison
 - Valuation Flags
 
-Outputs generated:
+### Generated Outputs
 
 - valuation_summary.xlsx
 - valuation_flags.csv
 
 ---
-
 # ▶️ Running the Project
 
-## Clone Repository
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/ramya831/Nifty100_Analytics.git
+
+cd Nifty100_Analytics
 ```
 
 ---
 
-## Install Dependencies
+## 2️⃣ Create a Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+### Activate Environment
+
+**Windows (Command Prompt)**
+
+```bash
+.venv\Scripts\activate
+```
+
+**Git Bash**
+
+```bash
+source .venv/Scripts/activate
+```
+
+---
+
+## 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -226,7 +389,7 @@ pip install -r requirements.txt
 
 ---
 
-## Create Database
+## 4️⃣ Create the Database
 
 ```bash
 python create_tables.py
@@ -234,7 +397,7 @@ python create_tables.py
 
 ---
 
-## Run ETL
+## 5️⃣ Run the ETL Pipeline
 
 ```bash
 python src/etl/loader.py
@@ -242,7 +405,29 @@ python src/etl/loader.py
 
 ---
 
-## Run Dashboard
+## 6️⃣ Start the FastAPI Server
+
+```bash
+uvicorn src.api.main:app --reload
+```
+
+After starting the server, open:
+
+**Swagger UI**
+
+```
+http://127.0.0.1:8000/docs
+```
+
+**ReDoc**
+
+```
+http://127.0.0.1:8000/redoc
+```
+
+---
+
+## 7️⃣ Run the Streamlit Dashboard
 
 ```bash
 streamlit run src/dashboard/app.py
@@ -250,39 +435,132 @@ streamlit run src/dashboard/app.py
 
 ---
 
-# 📊 Deliverables
+# 🧪 Running Tests
 
-- ETL Pipeline
-- SQLite Database
-- Financial Analytics
-- Dashboard
-- Valuation Module
-- CSV Export
-- Reports
-- Documentation
+## Run All Tests
+
+```bash
+pytest
+```
 
 ---
 
-# 📝 Sprint 4 Retrospective
+## Run Tests with Code Coverage
 
-## UX Decisions
+```bash
+pytest --cov=. tests
+```
 
-- Sidebar navigation for all screens
-- KPI cards for quick insights
-- Interactive Plotly charts
-- Responsive dashboard layout
+---
 
-### Data Edge Cases
+## Generate HTML Coverage Report
 
-- Missing values displayed as **N/A**
-- Invalid ticker handled gracefully
-- Empty datasets handled without crashes
+```bash
+pytest --cov=. --cov-report=html tests
+```
 
-### Performance
+The coverage report will be generated in:
 
-- Cached database queries
-- Optimized chart rendering
-- Dashboard pages load quickly
+```
+htmlcov/index.html
+```
+
+Open `htmlcov/index.html` in your browser to view the report.
+
+---
+
+## Run Performance Benchmark
+
+```bash
+python performance_test.py
+```
+
+Example Output:
+
+```text
+========================================
+Concurrent Requests: 10
+Total Time: 0.15 seconds
+Average Response: 0.095 seconds
+========================================
+```
+
+---
+# 📦 Project Deliverables
+
+The project successfully delivers:
+
+- ETL Data Pipeline
+- SQLite Database
+- Financial Ratio Analysis
+- CAGR & Cash Flow Analytics
+- Company Screener
+- Peer Comparison Engine
+- Portfolio Analytics
+- Sector Analysis
+- Valuation Module
+- Interactive Streamlit Dashboard
+- FastAPI REST APIs
+- Swagger & ReDoc API Documentation
+- CSV & Excel Export
+- Automated Testing Suite
+- Performance Benchmarking
+- Code Coverage Report
+- Project Documentation
+
+---
+
+# 📈 Performance & Quality
+
+### Testing Summary
+
+- ✅ 72 Automated Tests Passed
+- ✅ API Integration Testing Completed
+- ✅ ETL Validation Completed
+- ✅ KPI Validation Completed
+- ✅ Screener Logic Verified
+- ✅ Data Quality Rules Validated
+
+### Performance Benchmark
+
+- Concurrent API Performance Testing
+- Average API Response Time Measured
+- Performance Notes Generated
+
+### Code Quality
+
+- Pytest Test Suite
+- Code Coverage Analysis
+- HTML Coverage Report
+- Modular Project Structure
+
+---
+
+# 📝 Sprint 6 Retrospective
+
+## Key Achievements
+
+- Successfully completed all planned Sprint 6 tasks.
+- Developed and validated REST APIs using FastAPI.
+- Implemented automated unit and integration tests.
+- Measured API performance through benchmarking.
+- Generated code coverage reports for quality assurance.
+- Improved project documentation and maintainability.
+
+## Performance Improvements
+
+- Optimized API response times.
+- Improved project modularity.
+- Added automated testing for reliable deployments.
+- Enhanced overall project stability.
+
+## Lessons Learned
+
+- Importance of modular architecture.
+- Benefits of automated testing.
+- API documentation using Swagger and ReDoc.
+- Performance monitoring and benchmarking.
+- Version control using Git and GitHub.
 
 ---
 
@@ -291,6 +569,9 @@ streamlit run src/dashboard/app.py
 **Ungarala Ramya**
 
 B.Tech – Computer Science Engineering
+
+GitHub:
+https://github.com/ramya831
 
 ---
 
@@ -304,4 +585,24 @@ B.Tech – Computer Science Engineering
 
 ✅ Sprint 4 Completed
 
-🎉 Nifty100 Analytics Dashboard Successfully Developed.
+✅ Sprint 5 Completed
+
+✅ Sprint 6 Completed
+
+✅ ETL Pipeline Completed
+
+✅ Financial Analytics Completed
+
+✅ Streamlit Dashboard Completed
+
+✅ FastAPI REST APIs Completed
+
+✅ Automated Testing Completed
+
+✅ Performance Benchmarking Completed
+
+✅ Code Coverage Analysis Completed
+
+✅ Project Documentation Completed
+
+🎉 **Nifty100 Analytics Platform Successfully Developed.**
