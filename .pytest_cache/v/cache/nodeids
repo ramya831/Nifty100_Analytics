@@ -1,4 +1,8 @@
 [
+  "tests/api/test_companies.py::test_companies",
+  "tests/api/test_health.py::test_health",
+  "tests/api/test_screener.py::test_screener",
+  "tests/api/test_sectors.py::test_sectors",
   "tests/dq/test_rules.py::test_duplicate_ticker",
   "tests/dq/test_rules.py::test_high_roe",
   "tests/dq/test_rules.py::test_invalid_equity",
